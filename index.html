@@ -43,6 +43,35 @@ body{margin:0;background:radial-gradient(circle at 8% 8%,#e4eaff 0,transparent 2
 @media(max-width:760px){.result-stats{grid-template-columns:repeat(2,1fr)}.result-grid,.result-insights{grid-template-columns:1fr}}
 @media(max-width:430px){.rbar{grid-template-columns:100px 1fr 39px;gap:6px}.result-card,.result-chart{padding:15px}}
 
+
+/* Tableau-inspired dark analytics dashboard */
+#results{max-width:1120px;margin:38px auto 60px;padding:26px 20px 30px;background:#101e29;border:1px solid #203746;border-radius:25px;box-shadow:0 24px 65px #0b17231f;color:#e7f0f4}
+.results-head{text-align:left;margin:0 0 20px;padding:0 3px}
+.results-head h2{color:#f3f8fa;font-size:25px;letter-spacing:-.03em}
+.results-head p{color:#91a8b5}
+.result-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.result-card,.result-chart{background:#192c38;border:1px solid #29414e;border-radius:14px;box-shadow:none}
+.result-card{padding:17px 18px;position:relative;overflow:hidden}
+.result-card:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,#35c9b0,#60a7dc)}
+.result-card small{color:#91aab8;font-size:10px;letter-spacing:.04em}
+.result-card strong{color:#f2f8fa;font-size:29px}
+.result-card span{color:#8ca4b2}
+.result-grid{gap:10px}
+.result-chart{padding:18px 19px;min-width:0}
+.result-chart h3{color:#e8f2f5;font-size:13px}
+.result-chart>p{color:#829ba9}
+.rbar{grid-template-columns:115px minmax(30px,1fr) 38px;gap:8px;color:#b7c8d0}
+.rbar label{color:#b6c8d0;font-size:10px;line-height:1.35}
+.rtrack{height:8px;background:#263e4b}
+.rfill{background:linear-gradient(90deg,#2fc6b0,#46a9c7)}
+.rnum{color:#e2f1f3;font-size:10px}
+.result-insights{gap:10px}
+.result-insights article{background:#192c38;border:1px solid #29414e;border-radius:14px;padding:16px}
+.result-insights b{color:#e6f1f4}
+.result-insights p{color:#91a8b5}
+.result-note{color:#91a8b5;text-align:left;padding:0 4px}
+@media(max-width:760px){#results{padding:20px 13px;border-radius:18px}.result-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.result-grid,.result-insights{grid-template-columns:1fr}}
+
 </style></head><body>
 <header class="hero"><div class="hero-inner"><div class="eyebrow"><span aria-hidden="true">✦</span> International Student Survey · 2026</div><h1>한국 유학생의 아르바이트 실태와<br>학업에 미치는 영향</h1><div class="vi vi-hero">Thực trạng làm thêm của du học sinh tại Hàn Quốc và ảnh hưởng đến việc học tập</div><p>한국 대학교에 재학 중인 외국인 유학생의 아르바이트 경험과 학업 및 생활에 대한 생각을 알아보기 위한 설문조사입니다.</p></div></header>
 <nav class="results-nav"><a href="#survey">설문 참여하기</a><a href="#results">설문 결과 보기</a></nav>
