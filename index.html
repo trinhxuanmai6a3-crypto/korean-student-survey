@@ -26,8 +26,26 @@ body{margin:0;background:radial-gradient(circle at 8% 8%,#e4eaff 0,transparent 2
 .notice{font-size:11px;color:var(--muted);margin-top:17px;padding:12px 14px;background:#f7f8fb;border-radius:12px}.success{display:none;text-align:center;padding:42px 10px}.success h2{color:var(--navy);font-size:24px}.success p{color:var(--muted)}.success .big{font-size:48px;width:76px;height:76px;margin:auto;border-radius:50%;display:grid;place-items:center;color:#17634f;background:var(--mint)}.footer{text-align:center;color:#8791a2;font-size:11px;padding:0 16px 28px}
 @media(max-width:520px){.hero{padding:42px 18px 70px}.panel{padding:20px 16px;border-radius:20px}.options{grid-template-columns:1fr}.wrap{margin-top:-34px}.hero h1{font-size:29px}.section{font-size:14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Results dashboard */
+.results-nav{max-width:780px;margin:18px auto 0;padding:0 16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;z-index:3}
+.results-nav a{background:#fff;color:#172554;text-decoration:none;border:1px solid #dce4f5;border-radius:999px;padding:10px 17px;font-size:13px;font-weight:800;box-shadow:0 6px 20px #1d2b5710}
+#results{max-width:1050px;margin:38px auto 60px;padding:0 16px;scroll-margin-top:20px}
+.results-head{text-align:center;margin-bottom:20px}.results-head h2{color:#172554;font-size:27px;margin:0 0 5px}.results-head p{color:#687386;font-size:13px;margin:0}
+.result-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.result-card,.result-chart{background:#fff;border:1px solid #e7ebf4;border-radius:18px;padding:19px;box-shadow:0 12px 34px #1d2b570d}
+.result-card small{color:#687386;font-size:11px;font-weight:750}.result-card strong{display:block;color:#172554;font-size:30px;margin:4px 0}.result-card span{font-size:11px;color:#8992a2}
+.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.result-chart h3{font-size:14px;color:#172554;margin:0 0 3px}.result-chart>p{font-size:11px;color:#8791a2;margin:0 0 14px}
+.rbar{display:grid;grid-template-columns:120px 1fr 44px;gap:8px;align-items:center;margin:11px 0;font-size:11px}.rbar label{color:#445066}.rtrack{height:9px;background:#edf0f7;border-radius:99px;overflow:hidden}.rfill{height:100%;border-radius:99px;background:linear-gradient(90deg,#3156a6,#8272e5)}.rnum{text-align:right;color:#172554;font-weight:800}
+.result-note{font-size:10px;color:#929aaa;text-align:center;margin:18px 0 0}
+.result-insights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.result-insights article{background:linear-gradient(135deg,#fff,#f5f6ff);border:1px solid #e8eafa;border-radius:16px;padding:17px}.result-insights b{display:block;color:#172554;font-size:13px;margin-bottom:5px}.result-insights p{font-size:11px;color:#687386;margin:0}
+@media(max-width:760px){.result-stats{grid-template-columns:repeat(2,1fr)}.result-grid,.result-insights{grid-template-columns:1fr}}
+@media(max-width:430px){.rbar{grid-template-columns:100px 1fr 39px;gap:6px}.result-card,.result-chart{padding:15px}}
+
 </style></head><body>
 <header class="hero"><div class="hero-inner"><div class="eyebrow"><span aria-hidden="true">✦</span> International Student Survey · 2026</div><h1>한국 유학생의 아르바이트 실태와<br>학업에 미치는 영향</h1><div class="vi vi-hero">Thực trạng làm thêm của du học sinh tại Hàn Quốc và ảnh hưởng đến việc học tập</div><p>한국 대학교에 재학 중인 외국인 유학생의 아르바이트 경험과 학업 및 생활에 대한 생각을 알아보기 위한 설문조사입니다.</p></div></header>
+<nav class="results-nav"><a href="#survey">설문 참여하기</a><a href="#results">설문 결과 보기</a></nav>
 <main class="wrap"><section class="panel"><div id="survey"><div class="meta"><span class="pill">익명 설문</span><span class="pill">약 3분 소요</span><span class="pill">총 10문항</span></div>
 <p class="intro">안녕하세요! 본 설문은 수업 과제 및 발표 자료로 활용됩니다. 응답은 익명으로 처리되며, 모든 문항에 솔직하게 답변해 주시면 감사하겠습니다.</p>
 <div class="progress-row"><span>응답 진행률</span><span id="progressText">0 / 10</span></div><div class="progress"><div class="bar" id="progressBar"></div></div>
@@ -57,7 +75,43 @@ body{margin:0;background:radial-gradient(circle at 8% 8%,#e4eaff 0,transparent 2
 <label class="option"><input required type="radio" name="q10" value="근무 시간 조정">유학생을 위한 근무 시간 조정<span class="option-vi">Điều chỉnh thời gian làm việc phù hợp cho du học sinh</span></label><label class="option"><input type="radio" name="q10" value="유학생 친화적인 근무 환경">유학생 친화적인 근무 환경<span class="option-vi">Môi trường làm việc thân thiện với du học sinh</span></label><label class="option"><input type="radio" name="q10" value="대학의 취업 및 생활 지원 확대">대학의 취업 및 생활 지원 확대<span class="option-vi">Tăng cường hỗ trợ việc làm và đời sống từ trường đại học</span></label><label class="option"><input type="radio" name="q10" value="시간 관리 능력 향상">시간 관리 및 자기 관리 능력 향상<span class="option-vi">Nâng cao kỹ năng quản lý thời gian và tự quản lý bản thân</span></label><label class="option"><input type="radio" name="q10" value="기타">기타<span class="option-vi">Khác</span></label></div></div>
 <div class="q"><h3>11. 설문을 진행하면서 불편하셨거나 궁금한 문제점이 있다면 적어주세요<div class="vi">11. Nếu bạn gặp bất tiện hoặc có vấn đề/thắc mắc nào trong quá trình làm khảo sát, vui lòng ghi lại tại đây.</div><span class="required" style="background:#eef1f7;color:#65718a">선택 사항 · Không bắt buộc</span></h3><textarea name="q11" rows="4" maxlength="2000" placeholder="의견이나 궁금한 점을 자유롭게 적어주세요. / Hãy tự do ghi ý kiến hoặc thắc mắc của bạn." style="width:100%;box-sizing:border-box;padding:14px;border:1px solid #dce2ed;border-radius:12px;font:inherit;resize:vertical"></textarea></div>
 <div class="actions"><button class="btn primary" type="submit">설문 제출하기</button><button class="btn secondary" type="reset">다시 작성</button></div><p class="notice">※ 응답은 익명으로 Google Sheets에 저장됩니다. 중복 제출을 막으려면 한 번만 제출해 주세요.</p>
-</form></div><div class="success" id="success"><div class="big">✓</div><h2>설문에 참여해 주셔서 감사합니다!</h2><p>소중한 응답은 유학생의 아르바이트 실태를 이해하는 데 도움이 됩니다.</p><button class="btn secondary" onclick="location.reload()">설문 첫 화면으로</button></div></section></main><div class="footer">한국 유학생 아르바이트 설문조사 · 수업 과제 및 발표용</div>
+</form></div><div class="success" id="success"><div class="big">✓</div><h2>설문에 참여해 주셔서 감사합니다!</h2><p>소중한 응답은 유학생의 아르바이트 실태를 이해하는 데 도움이 됩니다.</p><button class="btn secondary" onclick="location.reload()">설문 첫 화면으로</button></div></section></main>
+<section id="results">
+<div class="results-head"><h2>설문조사 결과</h2><p>한국 유학생의 아르바이트 실태와 학업에 미치는 영향</p></div>
+<div class="result-stats">
+<div class="result-card"><small>응답자 수</small><strong>15명</strong><span>현재 결과 요약</span></div>
+<div class="result-card"><small>현재 아르바이트 중</small><strong>73.3%</strong><span>11명</span></div>
+<div class="result-card"><small>학업 영향에 동의</small><strong>66.7%</strong><span>10명</span></div>
+<div class="result-card"><small>수업·과제 어려움 경험</small><strong>73.3%</strong><span>11명</span></div>
+</div>
+<div class="result-grid">
+<div class="result-chart"><h3>아르바이트를 하는 이유</h3><p>가장 큰 이유를 선택한 응답</p>
+<div class="rbar"><label>생활비 마련</label><div class="rtrack"><div class="rfill" style="width:100%"></div></div><div class="rnum">7명</div></div><div class="rbar"><label>등록금 마련</label><div class="rtrack"><div class="rfill" style="width:28.57142857142857%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>저축 및 용돈</label><div class="rtrack"><div class="rfill" style="width:42.857142857142854%"></div></div><div class="rnum">3명</div></div><div class="rbar"><label>한국어 향상</label><div class="rtrack"><div class="rfill" style="width:14.285714285714285%"></div></div><div class="rnum">1명</div></div><div class="rbar"><label>사회 경험 및 취업</label><div class="rtrack"><div class="rfill" style="width:28.57142857142857%"></div></div><div class="rnum">2명</div></div>
+</div>
+<div class="result-chart"><h3>현재 아르바이트 여부</h3><p>응답자 15명 기준</p>
+<div class="rbar"><label>현재 하고 있다</label><div class="rtrack"><div class="rfill" style="width:73.33333333333333%"></div></div><div class="rnum">11명</div></div><div class="rbar"><label>과거에는 했지만 현재는 안 함</label><div class="rtrack"><div class="rfill" style="width:13.333333333333334%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>한 번도 해 본 적 없음</label><div class="rtrack"><div class="rfill" style="width:13.333333333333334%"></div></div><div class="rnum">2명</div></div>
+</div>
+<div class="result-chart"><h3>주당 평균 근무 시간</h3><p>일주일 평균 근무 시간 분포</p>
+<div class="rbar"><label>10시간 미만</label><div class="rtrack"><div class="rfill" style="width:40%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>10~20시간</label><div class="rtrack"><div class="rfill" style="width:100%"></div></div><div class="rnum">5명</div></div><div class="rbar"><label>20~30시간</label><div class="rtrack"><div class="rfill" style="width:80%"></div></div><div class="rnum">4명</div></div><div class="rbar"><label>30시간 이상</label><div class="rtrack"><div class="rfill" style="width:40%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>현재 일하지 않음</label><div class="rtrack"><div class="rfill" style="width:40%"></div></div><div class="rnum">2명</div></div>
+</div>
+<div class="result-chart"><h3>가장 큰 어려움</h3><p>아르바이트를 하면서 겪는 어려움</p>
+<div class="rbar"><label>학업과 일 병행</label><div class="rtrack"><div class="rfill" style="width:100%"></div></div><div class="rnum">5명</div></div><div class="rbar"><label>한국어 의사소통</label><div class="rtrack"><div class="rfill" style="width:40%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>불규칙한 근무 시간</label><div class="rtrack"><div class="rfill" style="width:40%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>육체적 피로</label><div class="rtrack"><div class="rfill" style="width:80%"></div></div><div class="rnum">4명</div></div><div class="rbar"><label>직장 내 인간관계</label><div class="rtrack"><div class="rfill" style="width:20%"></div></div><div class="rnum">1명</div></div><div class="rbar"><label>기타</label><div class="rtrack"><div class="rfill" style="width:20%"></div></div><div class="rnum">1명</div></div>
+</div>
+<div class="result-chart"><h3>학업에 미치는 영향</h3><p>아르바이트가 학업에 영향을 주는가?</p>
+<div class="rbar"><label>매우 그렇다</label><div class="rtrack"><div class="rfill" style="width:66.66666666666666%"></div></div><div class="rnum">4명</div></div><div class="rbar"><label>그렇다</label><div class="rtrack"><div class="rfill" style="width:100%"></div></div><div class="rnum">6명</div></div><div class="rbar"><label>보통이다</label><div class="rtrack"><div class="rfill" style="width:50%"></div></div><div class="rnum">3명</div></div><div class="rbar"><label>그렇지 않다</label><div class="rtrack"><div class="rfill" style="width:16.666666666666664%"></div></div><div class="rnum">1명</div></div><div class="rbar"><label>전혀 그렇지 않다</label><div class="rtrack"><div class="rfill" style="width:16.666666666666664%"></div></div><div class="rnum">1명</div></div>
+</div>
+<div class="result-chart"><h3>필요한 지원</h3><p>학업과 아르바이트를 병행하기 위해 필요한 것</p>
+<div class="rbar"><label>근무 시간 조정</label><div class="rtrack"><div class="rfill" style="width:100%"></div></div><div class="rnum">6명</div></div><div class="rbar"><label>친화적인 근무 환경</label><div class="rtrack"><div class="rfill" style="width:50%"></div></div><div class="rnum">3명</div></div><div class="rbar"><label>대학 지원 확대</label><div class="rtrack"><div class="rfill" style="width:50%"></div></div><div class="rnum">3명</div></div><div class="rbar"><label>시간 관리 능력</label><div class="rtrack"><div class="rfill" style="width:33.33333333333333%"></div></div><div class="rnum">2명</div></div><div class="rbar"><label>기타</label><div class="rtrack"><div class="rfill" style="width:16.666666666666664%"></div></div><div class="rnum">1명</div></div>
+</div>
+</div>
+<div class="result-insights">
+<article><b>생활비 마련이 주요 동기</b><p>생활비를 마련하기 위해 아르바이트를 한다는 응답이 가장 많습니다.</p></article>
+<article><b>학업과 근무의 균형이 중요</b><p>아르바이트와 학업을 병행하면서 수업 및 과제에 어려움을 경험할 수 있습니다.</p></article>
+<article><b>근무 시간 조정에 대한 요구</b><p>유학생이 학업 일정에 맞춰 일할 수 있는 유연한 근무 환경이 필요합니다.</p></article>
+</div>
+<p class="result-note">※ 결과 화면의 수치는 실제 설문 응답이 아닌 화면 구성용 예시입니다. 실제 조사 결과를 확보한 뒤 교체해 주세요.</p>
+</section>
+<div class="footer">한국 유학생 아르바이트 설문조사 · 수업 과제 및 발표용</div>
 <script>
 const form=document.getElementById('surveyForm'),bar=document.getElementById('progressBar'),pt=document.getElementById('progressText');
 function update(){let n=0;for(let i=1;i<=10;i++)if(form.querySelector('input[name=q'+i+']:checked'))n++;pt.textContent=n+' / 10';bar.style.width=(n*10)+'%'}
